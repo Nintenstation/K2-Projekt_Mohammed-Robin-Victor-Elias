@@ -1,11 +1,12 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
-    background-color: bisque;
+    background: linear-gradient(to top right, #FFDB01, #0E197D);
 }
 
 nav {
     border: 1px solid black;
+    background-color: #fff
 }
 
 footer {
@@ -30,6 +31,14 @@ footer p {
     background: white;
 }
 
-/*
-SKAPA MEDIA QUERY!!
-*/
+@media (min-width: 700px) {
+    .event-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .event-card {
+        margin-bottom: 0;
+    }
+}
