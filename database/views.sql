@@ -1,3 +1,6 @@
+USE EventFlow;
+GO
+
 --Vy som visar hur många evenemang varje kategori har, sorterat från flest till minst--
 
 --Skapa vyn--
@@ -5,15 +8,15 @@
 CREATE VIEW vw_AntalEvenemangPerKategori
 AS
 SELECT
-    k.KategoriId,
-    k.Namn AS Kategorinamn,
-COUNT(e.EvenemangId) AS AntalEvenemang
-FROM kategori AS k
-LEFT JOIN Evenemang AS e
-  ON k.KategoriId = e.KategoriId
+    c.KategoriId,
+    c.Namn AS Kategorinamn,
+    COUNT(e.EvenemangId) AS AntalEvenemang
+FROM Categories AS c
+LEFT JOIN Events AS e
+  ON c.KategoriId = e.KategoriId
 GROUP BY
-    k.KategoriId,
-    k.Namn;
+    c.KategoriId,
+    c.Namn;
 GO
 
 --Test vyn--

@@ -11,13 +11,13 @@ SELECT
 	e.Tid AS StartTid,
 	e.Plats,
 	e.Pris,
-	a.Namn AS ArrangörensNamn,
-	a.Email AS ArrangörensMejl,
-	a.Telefon AS ArrangörensTelefon
-FROM Evenemang AS e
-INNER JOIN Arrangör AS a
-	ON e.ArrangörId = a.ArrangörId
-ORDER BY e.Tid
+	o.Namn AS ArrangörensNamn,
+	o.Email AS ArrangörensMejl,
+	o.Telefon AS ArrangörensTelefon
+FROM Events AS e
+INNER JOIN Organizers AS o
+	ON e.ArrangörId = o.ArrangörId
+ORDER BY e.Tid;
 
 /*
 Fråga: Filtrera antal evenemang per kategori.
@@ -26,13 +26,13 @@ En resultatrad representerar: Namnet på en viss kategori (utan dess Id eller du
 Kontroll: Kategorin Festival finns som en grupp i resultattabellen, och i kolumnen skapad av Count-aggregaten är det “2”, som visar att Festival användes för två evenemang.
 */
 SELECT
-	k.Namn AS KategoriNamn,
-	Count(EvenemangId) AS AntalEvenemang
-FROM Kategori AS k
-INNER JOIN Evenemang AS e
-	ON e.KategoriId = k.KategoriId
-GROUP BY k.Namn
-ORDER BY k.Namn
+	c.Namn AS KategoriNamn,
+	COUNT(e.EvenemangId) AS AntalEvenemang
+FROM Categories AS c
+INNER JOIN Events AS e
+	ON e.KategoriId = c.KategoriId
+GROUP BY c.Namn
+ORDER BY c.Namn;
 
 
 

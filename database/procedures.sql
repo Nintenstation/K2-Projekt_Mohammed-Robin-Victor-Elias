@@ -25,10 +25,10 @@ BEGIN
         e.Tid AS StartTid,
         e.Plats,
         e.Pris,
-        k.Namn AS KategoriNamn
-    FROM Evenemang AS e
-    INNER JOIN Kategori AS k 
-        ON e.KategoriId = k.KategoriId
+        c.Namn AS KategoriNamn
+    FROM Events AS e
+    INNER JOIN Categories AS c 
+        ON e.KategoriId = c.KategoriId
     WHERE (e.Titel) LIKE '%' + (@Sökord) + '%' 
     AND LEN(TRIM(@Sökord)) > 0
     ORDER BY e.Datum, e.Tid;
@@ -65,12 +65,12 @@ BEGIN
         e.Tid AS StartTid,
         e.Plats,
         e.Pris,
-        k.Namn AS KategoriNamn
-    FROM Evenemang AS e
-    INNER JOIN Kategori AS k 
-        ON e.KategoriId = k.KategoriId
+        c.Namn AS KategoriNamn
+    FROM Events AS e
+    INNER JOIN Categories AS c 
+        ON e.KategoriId = c.KategoriId
     WHERE e.Titel = @Titel
-    ORDER BY e.Datum ASC, e.Tid ASC;
+    ORDER BY e.Datum, e.Tid;
 END;
 GO
 
@@ -102,12 +102,12 @@ BEGIN
         e.Tid AS StartTid,
         e.Plats,
         e.Pris,
-        k.Namn AS KategoriNamn
-    FROM Evenemang AS e
-    INNER JOIN Kategori AS k 
-        ON e.KategoriId = k.KategoriId
+        c.Namn AS KategoriNamn
+    FROM Events AS e
+    INNER JOIN Categories AS c 
+        ON e.KategoriId = c.KategoriId
     WHERE LOWER(e.Titel) = LOWER(@Titel)
-    ORDER BY e.Datum ASC, e.Tid ASC;
+    ORDER BY e.Datum, e.Tid;
 END;
 GO
   
@@ -139,12 +139,12 @@ BEGIN
         e.Tid AS StartTid,
         e.Plats,
         e.Pris,
-        k.Namn AS KategoriNamn
-    FROM Evenemang AS e
-    INNER JOIN Kategori AS k 
-        ON e.KategoriId = k.KategoriId
+        c.Namn AS KategoriNamn
+    FROM Events AS e
+    INNER JOIN Categories AS c 
+        ON e.KategoriId = c.KategoriId
     WHERE (e.Titel) LIKE '%' + (@Sökord) + '%' 
-    ORDER BY e.Datum ASC, e.Tid ASC;
+    ORDER BY e.Datum, e.Tid;
 END;
 GO
 
@@ -177,12 +177,12 @@ BEGIN
         e.Tid AS StartTid,
         e.Plats,
         e.Pris,
-        k.Namn AS KategoriNamn
-    FROM Evenemang AS e
-    INNER JOIN Kategori AS k 
-        ON e.KategoriId = k.KategoriId
+        c.Namn AS KategoriNamn
+    FROM Events AS e
+    INNER JOIN Categories AS c 
+        ON e.KategoriId = c.KategoriId
     WHERE LOWER(e.Titel) LIKE '%' + LOWER(@Sökord) + '%'
-    ORDER BY e.Datum ASC, e.Tid ASC;
+    ORDER BY e.Datum, e.Tid;
 END;
 GO
 
